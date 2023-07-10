@@ -1,8 +1,8 @@
 /*
   ******************************************************************************
-  * @title   	Practica 3 - Ejercicio 1
+  * @title   	Practica 3 - Ejercicio 2
   * @author  	Luciano M. Smith
-  * @brief		Programa que parpadea leds a distintas velocidades sin bloquear
+  * @brief	Programa que secuencia leds con retardos no bloqueantes
   * @hardware 	Nucleo-F429ZI
   ******************************************************************************
   */
