@@ -1,8 +1,15 @@
+Placa: Nucleo-F429ZI
+
+PdM_P5.zip (Archivos del proyecto completo comprimido)
+
 Práctica 5
 
 Objetivo:
-Implementar un módulo de software sencillo para trabajar con la UART. 
+
+Implementación  de un módulo de software sencillo para trabajar con la UART. 
+
 Punto 1
+
 Implementar un módulo de software en un archivos fuente API_uart.c con su correspondiente archivo de cabecera API_uart.h y ubicarlos en el proyecto dentro de  las carpetas /drivers/API/src y /drivers/API/inc, respectivamente.
 En API_uart.h se deben ubicar los prototipos de las funciones públicas.
 bool_t uartInit();
@@ -21,4 +28,5 @@ uartSendString(uint8_t *pstring) recibe un puntero a un string que se desea envi
 uartSendStringSize(uint8_t * pstring, uint16_t size) recibe un puntero a un string que se desea enviar por la UART y un entero con la cantidad de caracteres que debe enviar. La función debe utilizar HAL_UART_Transmit(...) para transmitir el string.
 
 Punto 2
+
 Sobre el ejercicio de la práctica 4, implementar un programa que utilice el módulo de uart para informar al usuario cuando se producen los flancos ascendente y descendente.
