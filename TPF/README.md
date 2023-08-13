@@ -10,4 +10,4 @@ La válvula maneja dos leds indicadores, un led verde que indica encendido y un 
 Por medio de una interfaz UART se podrá monitorear acciones realizadas por la válvula.
 
 
-HARDWARE: NUCLEO 429ZI
+HARDWARE: **NUCLEO 429ZI**
