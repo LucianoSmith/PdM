@@ -10,12 +10,11 @@
 #include "API_mef.h"
 
 static delay_t dledR;									// delay para el parpadeo del led rojo
-static delay_t dtimeOut1;								// delay para el timeout 1
+static delay_t dtimeOut1;								// delay para el timeout 1.
 static delay_t dtimeOut2;								// delay para el timeout 2
 static delay_t dtimeOut3;								// delay para el timeout 3
 
 static MEFState_t MEFState;								// variable estado actual
-
 
 /**
   * @brief  Inicializa la máquina de estados y todos sus perifericos.
@@ -147,7 +146,8 @@ void MEF_update() {
 
 		case carrier_entering:
 
-			if (delayRead(&dtimeOut1)) {				// si vencio el contador t1 ... vuelve a chequear contenedor
+			if (delayRead(&dtimeOut1)) {				// Al vencer el contador t1, vuelve a chequear si el contenedor contenedor aún
+														// se encuentra en la entrada a fin de evitar falsas detecciones
 
 				if (osensor_status(entering)) { 		// si esta el contenedor entonces
 
@@ -235,7 +235,8 @@ void MEF_update() {
 
 		case carrier_exiting:
 
-			if (delayRead(&dtimeOut2)) {
+			if (delayRead(&dtimeOut2)) {				// Al vencer el contador t2, vuelve a chequear si el contenedor no
+														// se encuentra en la salida a fin de cerrar la valvula y dañar el contenedor
 
 				if (!osensor_status(exiting)) { 		// sensa el sensor óptico de salida
 
