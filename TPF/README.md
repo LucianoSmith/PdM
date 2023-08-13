@@ -9,6 +9,6 @@ La válvula maneja dos leds indicadores, un led verde que indica encendido y un 
 
 Por medio de una interfaz UART se podrá monitorear acciones realizadas por la válvula.
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](img1.jpg)
 
 HARDWARE: **NUCLEO 429ZI**
