@@ -39,23 +39,25 @@ void osensor_init(void) {
 
 bool osensor_status(uint8_t pos) {
 
-	GPIO_PinState pinstatus;
-
 	bool res = false;
 
-	if (pos==entering){
+	if ((pos==entering) || (pos==exiting)) {
 
-		pinstatus = HAL_GPIO_ReadPin(GPIOE, GPIO_ENTERING);
+		GPIO_PinState pinstatus;
 
+		if (pos==entering){
+
+			pinstatus = HAL_GPIO_ReadPin(GPIOE, GPIO_ENTERING);
+
+		}
+
+		if (pos==exiting) {
+
+			pinstatus = HAL_GPIO_ReadPin(GPIOE, GPIO_EXITING);
+
+		}
+
+		if (pinstatus == GPIO_PIN_SET) res = true;
 	}
-
-	if (pos==exiting) {
-
-		pinstatus = HAL_GPIO_ReadPin(GPIOE, GPIO_EXITING);
-
-	}
-
-	if (pinstatus == GPIO_PIN_SET) res = true;
-
 	return res;
 }
