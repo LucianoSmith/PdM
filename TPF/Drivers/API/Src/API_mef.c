@@ -13,6 +13,7 @@ static delay_t dledR;									// delay para el parpadeo del led rojo
 static delay_t dtimeOut1;								// delay para el timeout 1.
 static delay_t dtimeOut2;								// delay para el timeout 2
 static delay_t dtimeOut3;								// delay para el timeout 3
+static delay_t dtimeOut4;								// delay para el timeout 4
 
 static MEFState_t MEFState;								// variable estado actual
 
@@ -33,6 +34,8 @@ void MEF_init() {										// Carga el estado inicial. No retorna valores.
 	delayInit(&dtimeOut2, t2);							// inicialización del delay para el vencimiento del timeout 2
 
 	delayInit(&dtimeOut3, t3);							// inicialización del delay para el vencimiento del timeout 3
+
+	delayInit(&dtimeOut4, t4);							// inicialización del delay para el vencimiento del timeout 4
 
 	BSP_LED_Init(ledV);									// inicializa led rojo
 
@@ -189,6 +192,8 @@ void MEF_update() {
 
 				MEFState = open_gate;					// siguiente estado
 
+				delayStart(&dtimeOut4);					// activa tiempo de timeout 4
+
 				uartSendString((uint8_t*)&"Valve open.\r\n");
 			}
 
@@ -228,6 +233,15 @@ void MEF_update() {
 
 					uartSendString((uint8_t*)&"Carrier exiting ... \r\n");
 
+				} else {
+
+					if (delayRead(&dtimeOut4)) {
+
+						MEFState = error_state;				// cambia el estado a error
+
+						uartSendString((uint8_t*)&"Timeout (4). Carrier not detected at exit.\r\n");
+
+					}
 				}
 			}
 
