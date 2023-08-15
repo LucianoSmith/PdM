@@ -17,7 +17,7 @@
 
 void motor_init(void) {
 
-	__GPIOA_CLK_ENABLE();
+	__GPIOC_CLK_ENABLE();
 
 	GPIO_InitTypeDef GPIO_InitStruct;
 
