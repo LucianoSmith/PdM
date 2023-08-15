@@ -17,7 +17,7 @@
 
 void osensor_init(void) {
 
-	__GPIOE_CLK_ENABLE();
+	__GPIOF_CLK_ENABLE();
 
 	GPIO_InitTypeDef GPIO_InitStruct;
 
@@ -47,13 +47,13 @@ bool osensor_status(uint8_t pos) {
 
 		if (pos==entering){
 
-			pinstatus = HAL_GPIO_ReadPin(GPIOE, GPIO_ENTERING);
+			pinstatus = HAL_GPIO_ReadPin(GPIOF, GPIO_ENTERING);
 
 		}
 
 		if (pos==exiting) {
 
-			pinstatus = HAL_GPIO_ReadPin(GPIOE, GPIO_EXITING);
+			pinstatus = HAL_GPIO_ReadPin(GPIOF, GPIO_EXITING);
 
 		}
 
